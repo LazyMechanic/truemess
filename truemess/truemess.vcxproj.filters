@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="core">
+      <UniqueIdentifier>{ef56383f-49d2-4770-80c0-50711f829a32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\Packet">
+      <UniqueIdentifier>{4347f885-1c40-4f20-983e-46cb93cc10b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\Room">
+      <UniqueIdentifier>{07413055-c6d3-49ac-b30b-cfa8a1c512c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\Server">
+      <UniqueIdentifier>{d77d14ee-af63-4f8f-a384-9f655d5b4a32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\Client">
+      <UniqueIdentifier>{0f6f8514-0086-4249-9444-cc85f633bce9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Client.cpp">
+      <Filter>core\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="Server.cpp">
+      <Filter>core\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="Config.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Client.h">
+      <Filter>core\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="Server.h">
+      <Filter>core\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Packet.h">
+      <Filter>core\Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketConnection.h">
+      <Filter>core\Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketDisconnection.h">
+      <Filter>core\Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketMessage.h">
+      <Filter>core\Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketRequest.h">
+      <Filter>core\Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketResponse.h">
+      <Filter>core\Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Room.h">
+      <Filter>core\Room</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
