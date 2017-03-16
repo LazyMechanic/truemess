@@ -9,19 +9,20 @@ public:
 		m_name(name),
 		m_message(message) {}
 	PacketMessage(sf::Packet& packet) : Packet(Packet::Type::MESSAGE, packet) {
-		packet >> m_name >> m_message;
+		packet >> m_roomId >> m_name >> m_message;
 	}
 
 	sf::Packet getPacket() {
 		sf::Packet packet = Packet::getPacket();
-		packet << m_name << m_message;
+		packet << m_roomId << m_name << m_message;
 		return packet;
 	}
 
-	std::string GetName() const { return m_name; }
-	std::string GetMessage() const { return m_message; }
-
+	std::string getName() const { return m_name; }
+	std::string getMessage() const { return m_message; }
+	sf::Uint8 getRoomId() const { return m_roomId; }
 private:
 	std::string m_name;
 	std::string m_message;
+	sf::Uint8 m_roomId;
 };

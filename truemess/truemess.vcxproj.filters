@@ -16,6 +16,12 @@
     <Filter Include="core\Client">
       <UniqueIdentifier>{0f6f8514-0086-4249-9444-cc85f633bce9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="core\User">
+      <UniqueIdentifier>{15c82ecf-19c8-4293-b803-71356e5363cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Trueconfig">
+      <UniqueIdentifier>{58cf0333-6f7c-4f90-bfc1-a3d68d9bd314}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -27,6 +33,15 @@
     </ClCompile>
     <ClCompile Include="Config.cpp">
       <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Room.cpp">
+      <Filter>core\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="User.cpp">
+      <Filter>core\User</Filter>
+    </ClCompile>
+    <ClCompile Include="Trueconfig.cpp">
+      <Filter>Trueconfig</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -57,11 +72,14 @@
     <ClInclude Include="PacketResponse.h">
       <Filter>core\Packet</Filter>
     </ClInclude>
-    <ClInclude Include="User.h">
-      <Filter>core</Filter>
-    </ClInclude>
     <ClInclude Include="Room.h">
       <Filter>core\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>core\User</Filter>
+    </ClInclude>
+    <ClInclude Include="Trueconfig.h">
+      <Filter>Trueconfig</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -6,6 +6,10 @@
 #include "Server.h"
 #include "Client.h"
 
+/*BEGIN TEST*/
+#include "Trueconfig.h"
+/*END TEST*/
+
 using console = mech::ConsoleConstructor;
 
 void ShowHelp();
@@ -82,7 +86,6 @@ int main(int argc, char* argv[])
 	catch (std::exception& exn) {
 		std::cerr << exn.what() << std::endl;
 	}
-	std::cout << "Hell yeah!!";
 
 	std::cin.get();
 	return 0;
