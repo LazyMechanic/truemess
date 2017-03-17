@@ -15,7 +15,6 @@ std::vector<Room> Trueconfig::Init()
 		if_config >> j;
 		if_config.close();
 		unsigned char id = 0;
-		std::cout << j;
 		for (JSON::iterator it = j["rooms"].begin(); it != j["rooms"].end(); it++, id++) {
 			it.value()["id"] = id;
 			it.value()["users"].clear();
@@ -53,7 +52,6 @@ void Trueconfig::Update(Trueconfig::Type type, const std::string& str)
 			if_config >> j;
 			if_config.close();
 			unsigned char id = 0;
-			std::cout << j;
 			for (JSON::iterator it = j["rooms"].begin(); it != j["rooms"].end(); it++, id++) {
 				it.value()["id"] = id;
 				m_rooms.push_back(Room(it.key(), id));

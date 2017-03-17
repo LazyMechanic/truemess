@@ -1,46 +1,21 @@
 #include <iostream>
 #include <string>
-#include <ConsoleConstructor/ConsoleConstructor.h>
+
+#include <ConsoleConstructor.h>
 
 #include "Config.h"
 #include "Server.h"
 #include "Client.h"
 
-/*BEGIN TEST*/
-#include "Trueconfig.h"
-/*END TEST*/
-
 using console = mech::ConsoleConstructor;
 
-void ShowHelp();
+//void ShowHelp();
 
 int main(int argc, char* argv[])
 {
 	bool asServer = false;
-	/*
-	console::onProgramName("truechat");
 
-	console::on("-h", "--help", "help", "abc");
-	console::on("-s", "--server", "server", "def");
-	console::on("-c", "--client", "client", "ghi");
-	console::on("-p", "--port", "port", "klm");
-
-	console::consoleHandler(argc, argv);
-
-	if (console::isInstruction("server")) {
-		std::cout << "kek --server";
-		asServer = true;
-	}
-	if (console::isInstruction("client")) {
-		std::cout << "kek --client";
-		asServer = false;
-	}
-	if (console::isInstruction("port")) {
-		Config::port = std::atoi(console::getArguments("port")[0].c_str());
-		std::cout << "kek --port " << Config::port;
-	}
-	*/
-	
+	/* OLD VERSION
 	if (argc > 1) {
 		for (int i = 1; i < argc; i++) {
 			std::string arg = argv[i];
@@ -71,9 +46,33 @@ int main(int argc, char* argv[])
 			}
 		}
 	}
-	
+	*/
 
 	try {
+		console::onProgramName("truechat");
+
+		console::on("-s", "--server", "server", "def");
+		console::on("-c", "--client", "client", "ghi");
+		console::on("-p", "--port", "port", "klm");
+
+		console::consoleHandler(argc, argv);
+
+		if (console::getStatusInstruction("server")) {
+			std::cout << "kek --server\n";
+			asServer = true;
+		}
+		if (console::getStatusInstruction("client")) {
+			std::cout << "kek --client\n";
+			asServer = false;
+		}
+		if (console::getStatusInstruction("port")) {
+			if (console::getArguments("port").size() == 0) {
+				throw std::exception("Wrong port.");
+			}
+			Config::port = std::atoi(console::getArguments("port")[0].c_str());
+			std::cout << "kek --port " << Config::port << "\n";
+		}
+
 		if (asServer) {
 			Server server;
 			server.Run();
@@ -90,7 +89,8 @@ int main(int argc, char* argv[])
 	std::cin.get();
 	return 0;
 }
-
+/*
 void ShowHelp() {
 	std::cout << "help";
 }
+*/
