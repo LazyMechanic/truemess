@@ -22,6 +22,9 @@
     <Filter Include="Trueconfig">
       <UniqueIdentifier>{58cf0333-6f7c-4f90-bfc1-a3d68d9bd314}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Truelog">
+      <UniqueIdentifier>{dfec8577-edf7-47ca-98e2-46d7b2b4322e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -42,6 +45,9 @@
     </ClCompile>
     <ClCompile Include="Trueconfig.cpp">
       <Filter>Trueconfig</Filter>
+    </ClCompile>
+    <ClCompile Include="Truelog.cpp">
+      <Filter>Truelog</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +86,9 @@
     </ClInclude>
     <ClInclude Include="Trueconfig.h">
       <Filter>Trueconfig</Filter>
+    </ClInclude>
+    <ClInclude Include="Truelog.h">
+      <Filter>Truelog</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
