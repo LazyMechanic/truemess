@@ -25,17 +25,17 @@
     <Filter Include="Truelog">
       <UniqueIdentifier>{dfec8577-edf7-47ca-98e2-46d7b2b4322e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="core\Client\UI">
+      <UniqueIdentifier>{97e391a4-a54e-4eb1-91c2-eb9ded47372c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\Client\States">
+      <UniqueIdentifier>{7611e420-4962-41af-bad1-1b9804631fae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Client.cpp">
-      <Filter>core\Client</Filter>
-    </ClCompile>
     <ClCompile Include="Server.cpp">
       <Filter>core\Server</Filter>
-    </ClCompile>
-    <ClCompile Include="Config.cpp">
-      <Filter>core</Filter>
     </ClCompile>
     <ClCompile Include="Room.cpp">
       <Filter>core\Room</Filter>
@@ -49,6 +49,15 @@
     <ClCompile Include="Truelog.cpp">
       <Filter>Truelog</Filter>
     </ClCompile>
+    <ClCompile Include="StateMainMenu.cpp">
+      <Filter>core\Client\States</Filter>
+    </ClCompile>
+    <ClCompile Include="StateAuthentication.cpp">
+      <Filter>core\Client\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Client.cpp">
+      <Filter>core\Client</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -56,9 +65,6 @@
     </ClInclude>
     <ClInclude Include="Server.h">
       <Filter>core\Server</Filter>
-    </ClInclude>
-    <ClInclude Include="Config.h">
-      <Filter>core</Filter>
     </ClInclude>
     <ClInclude Include="Packet.h">
       <Filter>core\Packet</Filter>
@@ -89,6 +95,24 @@
     </ClInclude>
     <ClInclude Include="Truelog.h">
       <Filter>Truelog</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>core\Client\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>core\Client\States</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMainMenu.h">
+      <Filter>core\Client\States</Filter>
+    </ClInclude>
+    <ClInclude Include="StateRoom.h">
+      <Filter>core\Client\States</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMenu.h">
+      <Filter>core\Client\States</Filter>
+    </ClInclude>
+    <ClInclude Include="StateAuthentication.h">
+      <Filter>core\Client\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

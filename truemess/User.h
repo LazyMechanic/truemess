@@ -1,11 +1,11 @@
 #pragma once
 
 #include <SFML/Network.hpp>
+#include <curses.h>
 
 #include <memory>
 #include <iostream>
 
-#include "Config.h"
 #include "Room.h"
 
 class User {

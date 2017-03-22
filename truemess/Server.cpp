@@ -2,17 +2,17 @@
 
 #include <iostream>
 
-#include "Config.h"
 #include "Trueconfig.h"
 
 void Server::Run()
 {
-	if (m_listener.listen(Config::port) != sf::Socket::Done) {
-		throw std::runtime_error("Unable to create server on port " + std::to_string(Config::port));
+	Trueconfig::Init();
+	m_rooms = Trueconfig::getRooms();
+
+	if (m_listener.listen(Trueconfig::getPort()) != sf::Socket::Done) {
+		throw std::runtime_error("Unable to create server on port " + std::to_string(Trueconfig::getPort()));
 	}
 	m_socketSelector.add(m_listener);
-
-	m_rooms = Trueconfig::Init();
 
 	while (true) {
 		// Make the selector wait for data on any socket

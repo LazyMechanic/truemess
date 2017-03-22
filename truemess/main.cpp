@@ -3,12 +3,13 @@
 
 #include <ConsoleConstructor.h>
 
-#include "Config.h"
 #include "Server.h"
 #include "Client.h"
 #include "Truelog.h"
+#include "Trueconfig.h"
 
 using console = mech::ConsoleConstructor;
+
 
 int main(int argc, char* argv[])
 {
@@ -17,26 +18,26 @@ int main(int argc, char* argv[])
 	try {
 		console::onProgramName("truechat");
 
-		console::on("-s", "--server", "server", "def");
-		console::on("-c", "--client", "client", "ghi");
-		console::on("-p", "--port", "port", "klm");
+		console::on("server", "-s", "--server", "Start \"Truemess\" like the server.");
+		console::on("client", "-c", "--client", "Start \"Truemess\" like the client.");
+		console::on("port", "-p", "--port", "Set port on which to work the server. Default port is " + std::to_string(Trueconfig::getPort()) + ".");
 
-		console::consoleHandler(argc, argv);
+		int state = console::consoleHandler(argc, argv);
+		if (state < 1) {
+			return state;
+		}
 
 		if (console::getStatusInstruction("server")) {
-			std::cout << "kek --server\n";
 			asServer = true;
 		}
 		if (console::getStatusInstruction("client")) {
-			std::cout << "kek --client\n";
 			asServer = false;
 		}
 		if (console::getStatusInstruction("port")) {
 			if (console::getArguments("port").size() == 0) {
 				throw std::exception("Wrong port.");
 			}
-			Config::port = std::atoi(console::getArguments("port")[0].c_str());
-			std::cout << "kek --port " << Config::port << "\n";
+			Trueconfig::setPort(std::atoi(console::getArguments("port")[0].c_str()));
 		}
 
 		if (asServer) {
@@ -49,9 +50,8 @@ int main(int argc, char* argv[])
 		}
 	}
 	catch (std::exception& exn) {
-		std::cerr << exn.what() << std::endl;
+		Truelog::Stream(TruelogStreamType::FILE) << exn.what();
 	}
 
-	std::cin.get();
 	return 0;
 }

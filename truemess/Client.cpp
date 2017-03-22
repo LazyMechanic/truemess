@@ -1,12 +1,53 @@
 #include "Client.h"
 
-#include "Config.h"
+#include "Trueconfig.h"
 
 void Client::Run()
 {
-	if (m_socket.connect(sf::IpAddress("127.0.0.1"), Config::port) != sf::Socket::Done) {
-		throw std::exception("Unable to connect to server");
+	// TODO: add server selection (ip selection/input)
+
+	initscr();
+
+	PushState(StateAuthentication());
+
+	State* state = PeekState();
+
+	while (!m_states.empty()) {
+		state->onUpdate();
+		state->onDraw();
+		//refresh();
+
+		state = PeekState();
 	}
+	endwin();
+}
 
+void Client::PushState(const State& state)
+{
+	std::unique_ptr<State> st = std::make_unique<State>(state);
+	m_states.push(std::move(st));
+}
 
+void Client::ChangeState(const State & state)
+{
+	PopState();
+	std::unique_ptr<State> st = std::make_unique<State>(state);
+	m_states.push(std::move(st));
+}
+
+void Client::PopState()
+{
+	if (!m_states.empty()) {
+		m_states.pop();
+	}
+}
+
+State * Client::PeekState()
+{
+	if (!m_states.empty()) {
+		return m_states.top().get();
+	}
+	else {
+		return nullptr;
+	}
 }

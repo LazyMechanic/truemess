@@ -2,10 +2,11 @@
 
 std::string Trueconfig::m_path = "./config.json";
 std::vector<Room> Trueconfig::m_rooms;
+unsigned short Trueconfig::m_port = 45000;
 
 using JSON = nlohmann::json;
 
-std::vector<Room> Trueconfig::Init()
+void Trueconfig::Init()
 {
 	std::ifstream if_config;
 	if_config.open(m_path);
@@ -14,12 +15,24 @@ std::vector<Room> Trueconfig::Init()
 		JSON j;
 		if_config >> j;
 		if_config.close();
+
 		unsigned char id = 0;
 		for (JSON::iterator it = j["rooms"].begin(); it != j["rooms"].end(); it++, id++) {
 			it.value()["id"] = id;
 			it.value()["users"].clear();
 			m_rooms.push_back(Room(it.key(), id));
 		}
+
+		if (j.find("port") == j.end()) {
+			j["port"] = m_port;
+		}
+		else if (m_port != 45000) {
+			j["port"] = m_port;
+		}
+		else {
+			m_port = j["port"];
+		}
+
 		std::ofstream of_config;
 		of_config.open(m_path);
 		if (of_config.is_open()) {
@@ -29,7 +42,6 @@ std::vector<Room> Trueconfig::Init()
 		else {
 			throw std::exception("Config cannot opened.");
 		}
-		return m_rooms;
 	}
 	else {
 		throw std::exception("Config cannot opened.");
@@ -39,6 +51,11 @@ std::vector<Room> Trueconfig::Init()
 void Trueconfig::setConfigPath(const std::string & path)
 {
 	m_path = path;
+}
+
+void Trueconfig::setPort(unsigned short port)
+{
+	m_port = port;
 }
 
 void Trueconfig::Update(Trueconfig::Type type, const std::string& str)
@@ -82,4 +99,9 @@ void Trueconfig::Update(Trueconfig::Type type, const std::string& str)
 std::vector<Room> Trueconfig::getRooms()
 {
 	return m_rooms;
+}
+
+unsigned short Trueconfig::getPort()
+{
+	return m_port;
 }

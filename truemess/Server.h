@@ -25,5 +25,6 @@ private:
 	// List of rooms
 	std::vector<Room> m_rooms;
 
+	// All users in chat
 	std::vector<User> m_users;
 };
