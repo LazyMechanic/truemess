@@ -13,10 +13,12 @@ using console = mech::ConsoleConstructor;
 
 int main(int argc, char* argv[])
 {
+	Truelog::InitFile();
+
 	bool asServer = false;
 
 	try {
-		console::onProgramName("truechat");
+		console::setProgramName("truechat");
 
 		console::on("server", "-s", "--server", "Start \"Truemess\" like the server.");
 		console::on("client", "-c", "--client", "Start \"Truemess\" like the client.");

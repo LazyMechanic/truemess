@@ -17,16 +17,27 @@ enum class TruelogStreamType {
 };
 
 class Truelog {
+//private:
 	class LogHelper;
 public:
 	static void InitFile(const std::string& path = "log.txt");
 
+	// Write logs
 	static Truelog& Stream(TruelogStreamType streamt = TruelogStreamType::ALL);
 
 	template <class Arg>
 	LogHelper & operator<<(const Arg & arg)
 	{
-		std::cout << std::endl;
+		if (m_streamType == TruelogStreamType::ALL) {
+			std::cout << std::endl;
+			m_log << std::endl;
+		}
+		else if (m_streamType == TruelogStreamType::CONSOLE) {
+			std::cout << std::endl;
+		}
+		else {
+			m_log << std::endl;
+		}
 		return (LogHelper(this) << arg);
 	}
 private:

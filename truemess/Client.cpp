@@ -4,40 +4,47 @@
 
 void Client::Run()
 {
-	// TODO: add server selection (ip selection/input)
-
 	initscr();
 
-	PushState(StateAuthentication());
+	noecho();
 
-	State* state = PeekState();
+	start_color();
+
+	// Set non-blocking getch()
+	timeout(0);
+
+	refresh();
+	
+	std::thread input(Input::onHandleEvents);
+	input.detach();
+
+	PushState<StateAuthentication>();
+	PeekState()->onInit();
 
 	while (!m_states.empty()) {
-		state->onUpdate();
-		state->onDraw();
-		//refresh();
+		State* state;
 
-		state = PeekState();
+		if (state = PeekState()) {
+			state->onDraw();
+		}
+
+		if (state = PeekState()) {
+			state->onUpdate();
+		}
+
+		if (state = PeekState()) {
+			state->HandleEvents();
+		}
+
+
 	}
 	endwin();
-}
-
-void Client::PushState(const State& state)
-{
-	std::unique_ptr<State> st = std::make_unique<State>(state);
-	m_states.push(std::move(st));
-}
-
-void Client::ChangeState(const State & state)
-{
-	PopState();
-	std::unique_ptr<State> st = std::make_unique<State>(state);
-	m_states.push(std::move(st));
 }
 
 void Client::PopState()
 {
 	if (!m_states.empty()) {
+		m_states.top()->onClose();
 		m_states.pop();
 	}
 }

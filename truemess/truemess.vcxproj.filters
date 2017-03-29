@@ -7,9 +7,6 @@
     <Filter Include="core\Packet">
       <UniqueIdentifier>{4347f885-1c40-4f20-983e-46cb93cc10b9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="core\Room">
-      <UniqueIdentifier>{07413055-c6d3-49ac-b30b-cfa8a1c512c4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="core\Server">
       <UniqueIdentifier>{d77d14ee-af63-4f8f-a384-9f655d5b4a32}</UniqueIdentifier>
     </Filter>
@@ -25,11 +22,14 @@
     <Filter Include="Truelog">
       <UniqueIdentifier>{dfec8577-edf7-47ca-98e2-46d7b2b4322e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="core\Client\UI">
-      <UniqueIdentifier>{97e391a4-a54e-4eb1-91c2-eb9ded47372c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="core\Client\States">
       <UniqueIdentifier>{7611e420-4962-41af-bad1-1b9804631fae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\Client\Input">
+      <UniqueIdentifier>{a558a6c2-1ed7-4bcf-b945-80ce0271611e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\Server\Room">
+      <UniqueIdentifier>{07413055-c6d3-49ac-b30b-cfa8a1c512c4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -38,7 +38,7 @@
       <Filter>core\Server</Filter>
     </ClCompile>
     <ClCompile Include="Room.cpp">
-      <Filter>core\Room</Filter>
+      <Filter>core\Server\Room</Filter>
     </ClCompile>
     <ClCompile Include="User.cpp">
       <Filter>core\User</Filter>
@@ -57,6 +57,9 @@
     </ClCompile>
     <ClCompile Include="Client.cpp">
       <Filter>core\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>core\Client\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -85,7 +88,7 @@
       <Filter>core\Packet</Filter>
     </ClInclude>
     <ClInclude Include="Room.h">
-      <Filter>core\Room</Filter>
+      <Filter>core\Server\Room</Filter>
     </ClInclude>
     <ClInclude Include="User.h">
       <Filter>core\User</Filter>
@@ -95,9 +98,6 @@
     </ClInclude>
     <ClInclude Include="Truelog.h">
       <Filter>Truelog</Filter>
-    </ClInclude>
-    <ClInclude Include="UI.h">
-      <Filter>core\Client\UI</Filter>
     </ClInclude>
     <ClInclude Include="State.h">
       <Filter>core\Client\States</Filter>
@@ -112,6 +112,15 @@
       <Filter>core\Client\States</Filter>
     </ClInclude>
     <ClInclude Include="StateAuthentication.h">
+      <Filter>core\Client\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>core\Client\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="StateConnection.h">
+      <Filter>core\Client\States</Filter>
+    </ClInclude>
+    <ClInclude Include="StateRegistration.h">
       <Filter>core\Client\States</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,8 +2,6 @@
 
 #include <curses.h>
 
-#include "UI.h"
-
 class Client;
 
 class State {

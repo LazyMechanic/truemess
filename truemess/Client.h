@@ -16,8 +16,21 @@ class Client {
 public:
 	void Run();
 
-	void PushState(const State& state);
-	void ChangeState(const State& state);
+	template<class T>
+	void PushState() {
+		// Test input type
+		static_assert(std::is_base_of<State, T>::value, "Type must be base of State");
+		std::unique_ptr<T> state = std::make_unique<T>();
+		state->m_client = this;
+		m_states.push(std::move(state));
+	}
+	template<class T>
+	void ChangeState() {
+		// Test input type
+		static_assert(std::is_base_of<State, T>::value, "Type must be base of State");
+		PopState();
+		PushState<T>();
+	}
 	void PopState();
 	State* PeekState();
 

@@ -42,20 +42,22 @@ namespace mech
 	public:
 		static int consoleHandler(int argc, char* argv[]);
 
-		static void onProgramName(const std::string& name);
+		static void setProgramName(const std::string& name);
 
 		static int on(const std::string& meaning, const std::string& instruction, const std::string& altInstruction, const std::string& comment = "");
 		static int on(const std::string& meaning, const std::string& instruction, const std::string& comment = "");
 
-		// str = instruction/altInstruction
-		static std::vector<std::string> getArguments(const std::string& instruction);
+		// str = instruction/altInstruction/meaning
+		static std::vector<std::string> getArguments(const std::string& str);
 
+		// str = instruction/altInstruction/meaning
 		static bool getStatusInstruction(const std::string& str);
 	private:
 		enum STATE : int {
-			NORMAL = 0,
-			INVALID_NUMBER = 1,
-			WRONG_ARGUMENTS = 2
+			NORMAL = 1,
+			HELP = 0,
+			INVALID_NUMBER = -1,
+			WRONG_ARGUMENTS = -2
 		};
 
 		static void help(STATE state = STATE::NORMAL);

@@ -10,7 +10,6 @@ void StateMainMenu::HandleEvents()
 
 void StateMainMenu::onUpdate()
 {
-	HandleEvents();
 }
 
 void StateMainMenu::onDraw()
